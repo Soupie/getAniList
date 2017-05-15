@@ -60,7 +60,7 @@ class getAniList:
 
     # Series
     def series_request(self, series_type, end=""):
-        return self.get_request("series/{series_type}/{end}".format(series_type=series_type, end=end))
+        return self.get_request("{series_type}/{end}".format(series_type=series_type, end=end))
 
     def get_series_page(self, series_type, id):
         return self.series_request(series_type, "{id}/page".format(id=id))
@@ -82,3 +82,33 @@ class getAniList:
 
     def get_series_search(self, series_type, query):
         return self.series_request(series_type, "/search/{query}".format(query=query))
+
+    # Characters
+    def character_request(self, end):
+        return self.get_request("character/{end}".format(end=end))
+
+    def get_character_page(self, id):
+        return self.character_request("{id}/page".format(id=id))
+
+    def get_character_search(self, query):
+        return self.character_request("search/{query}".format(query=query))
+
+    # Staff
+    def staff_request(self, end):
+        return self.get_request("staff/{id}".format(id=id))
+
+    def get_staff_page(self, id):
+        return self.staff_request("{id}/page".format(id=id))
+
+    def staff_search(self, query):
+        return self.staff_request("search/{query}".format(query=query))
+
+    # Studio
+    def studio_request(self, end):
+        return self.get_request("studio/{id}".format(id=id))
+
+    def get_studio_page(self, id):
+        return self.studio_request("{id}/page".format(id=id))
+
+    def studio_search(self, query):
+        return self.studio_request("search/{query}".format(query=query))
