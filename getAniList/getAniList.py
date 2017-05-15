@@ -57,3 +57,28 @@ class getAniList:
 
     def get_user_mangalist_raw(self, user):
         return self.user_request(user, "animelist/raw")
+
+    # Series
+    def series_request(self, series_type, end=""):
+        return self.get_request("series/{series_type}/{end}".format(series_type=series_type, end=end))
+
+    def get_series_page(self, series_type, id):
+        return self.series_request(series_type, "{id}/page".format(id=id))
+
+    def get_series_characters(self, series_type, id):
+        return self.series_request(series_type, "{id}/characters".format(id=id))
+
+    def get_series_staff(self, series_type, id):
+        return self.series_request(series_type, "{id}/staff".format(id=id))
+
+    def get_series_actors(self, series_type, id):
+        return self.series_request(series_type, "{id}/actors".format(id=id))
+
+    def get_airing(self, id):
+        return self.series_request("anime","{id}/airing".format(id=id))
+
+    def get_genre_list(self):
+        return self.get_request("genre_list")
+
+    def get_series_search(self, series_type, query):
+        return self.series_request(series_type, "/search/{query}".format(query=query))
