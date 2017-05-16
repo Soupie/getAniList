@@ -62,20 +62,20 @@ class getAniList:
     def series_request(self, series_type, end=""):
         return self.get_request("{series_type}/{end}".format(series_type=series_type, end=end))
 
-    def get_series_page(self, series_type, id):
-        return self.series_request(series_type, "{id}/page".format(id=id))
+    def get_series_page(self, series_type, series_id):
+        return self.series_request(series_type, "{series_id}/page".format(series_id=series_id))
 
-    def get_series_characters(self, series_type, id):
-        return self.series_request(series_type, "{id}/characters".format(id=id))
+    def get_series_characters(self, series_type, series_id):
+        return self.series_request(series_type, "{series_id}/characters".format(series_id=series_id))
 
-    def get_series_staff(self, series_type, id):
-        return self.series_request(series_type, "{id}/staff".format(id=id))
+    def get_series_staff(self, series_type, series_id):
+        return self.series_request(series_type, "{series_id}/staff".format(series_id=series_id))
 
-    def get_series_actors(self, series_type, id):
-        return self.series_request(series_type, "{id}/actors".format(id=id))
+    def get_series_actors(self, series_type, series_id):
+        return self.series_request(series_type, "{series_id}/actors".format(series_id=series_id))
 
-    def get_airing(self, id):
-        return self.series_request("anime","{id}/airing".format(id=id))
+    def get_airing(self, series_id):
+        return self.series_request("anime","{series_id}/airing".format(series_id=series_id))
 
     def get_genre_list(self):
         return self.get_request("genre_list")
@@ -87,8 +87,8 @@ class getAniList:
     def character_request(self, end):
         return self.get_request("character/{end}".format(end=end))
 
-    def get_character_page(self, id):
-        return self.character_request("{id}/page".format(id=id))
+    def get_character_page(self, character_id):
+        return self.character_request("{character_id}/page".format(character_id=character_id))
 
     def get_character_search(self, query):
         return self.character_request("search/{query}".format(query=query))
@@ -97,18 +97,28 @@ class getAniList:
     def staff_request(self, end):
         return self.get_request("staff/{id}".format(id=id))
 
-    def get_staff_page(self, id):
-        return self.staff_request("{id}/page".format(id=id))
+    def get_staff_page(self, staff_id):
+        return self.staff_request("{staff_id}/page".format(staff_id=staff_id))
 
     def staff_search(self, query):
         return self.staff_request("search/{query}".format(query=query))
 
     # Studio
     def studio_request(self, end):
-        return self.get_request("studio/{id}".format(id=id))
+        return self.get_request("studio/{end}".format(end=end))
 
-    def get_studio_page(self, id):
-        return self.studio_request("{id}/page".format(id=id))
+    def get_studio_page(self, studio_id):
+        return self.studio_request("{studio_id}/page".format(studio_id=studio_id))
 
     def studio_search(self, query):
         return self.studio_request("search/{query}".format(query=query))
+
+    # Reviews
+    def get_review(self, series_type, review_id):
+        return self.get_request("{series_type}/review/{review_id}".format(series_type=series_type, review_id=review_id))
+
+    def get_series_review(self, series_type, series_id):
+        return self.get_request("{series_type}/{series_id}".format(series_type=series_type, series_id=series_id))
+
+    def get_user_review(self, user):
+        return self.get_request("user/{user}/reviews".format(user=user))
