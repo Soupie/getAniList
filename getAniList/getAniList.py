@@ -17,7 +17,7 @@ class getAniList:
         return r.json()
 
     def update_token(self):
-        r = requests.get("https://anilist.co/api/user/josh", headers = {"Authorization":"Bearer {token}".format(token=self.token)})
+        r = requests.get("https://anilist.co/api/anime/1", headers = {"Authorization":"Bearer {token}".format(token=self.token)})
         if "error" in r.json():
             self.token = requests.post("https://anilist.co/api/auth/access_token", data={"grant_type":"client_credentials", "client_id":self.client_id, "client_secret":self.client_secret}).json()["access_token"]
 
